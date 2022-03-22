@@ -30,4 +30,18 @@ describe('Testa o componente App', () => {
     const { location: { pathname } } = history;
     expect(pathname).toBe('/about');
   });
+
+  test('Verifica se o link possui o texto "Favorite Pokémons" e leva ao "/favorites"',
+    () => {
+      const { history } = renderWithRouter(<App />);
+
+      const favoritesLink = screen.getByRole('link', {
+        name: 'Favorite Pokémons',
+      });
+      expect(favoritesLink).toBeInTheDocument();
+
+      userEvent.click(favoritesLink);
+      const { location: { pathname } } = history;
+      expect(pathname).toBe('/favorites');
+    });
 });
