@@ -17,4 +17,17 @@ describe('Testa o componente App', () => {
     const { location: { pathname } } = history;
     expect(pathname).toBe('/');
   });
+
+  test('Verifica se o link possui o texto "About" e leva ao endereço "/about"', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const aboutLink = screen.getByRole('link', {
+      name: 'About',
+    });
+    expect(aboutLink).toBeInTheDocument();
+
+    userEvent.click(aboutLink);
+    const { location: { pathname } } = history;
+    expect(pathname).toBe('/about');
+  });
 });
