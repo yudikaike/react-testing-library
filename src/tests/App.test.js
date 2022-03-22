@@ -44,4 +44,18 @@ describe('Testa o componente App', () => {
       const { location: { pathname } } = history;
       expect(pathname).toBe('/favorites');
     });
+
+  test('Verifica se ao digitar um endereço desconhecido, o componente NotFound é exibido',
+    () => {
+      const { history } = renderWithRouter(<App />);
+
+      history.push('/páginaquenãoexiste');
+
+      const pageNotFound = screen.getByRole('heading', {
+        level: 2,
+        name: 'Page requested not found Crying emoji',
+      });
+
+      expect(pageNotFound).toBeInTheDocument();
+    });
 });
