@@ -14,4 +14,14 @@ describe('Testa o componente About', () => {
 
     expect(header).toBeInTheDocument();
   });
+
+  test('Contém dois parágrafos com textos sobre a pokédex"', () => {
+    renderWithRouter(<About />);
+
+    const paragraph1 = screen.getByText(/This/i);
+    const paragraph2 = screen.getByText(/One/i);
+
+    expect(paragraph1).toBeInTheDocument();
+    expect(paragraph2).toBeInTheDocument();
+  });
 });
