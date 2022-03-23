@@ -1,5 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 
@@ -18,5 +19,18 @@ describe('Testa o componente Pokemon', () => {
 
     const { src } = screen.getByAltText('Pikachu sprite');
     expect(src).toBe('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  });
+
+  test('Contém um link que direciona aos detalhes do pokémon', () => {
+    const { history } = renderWithRouter(<App />);
+
+    const detailsLink = screen.getByRole('link', {
+      name: 'More details',
+    });
+    userEvent.click(detailsLink);
+
+    const { location: { pathname } } = history;
+
+    expect(pathname).toBe('/pokemons/25');
   });
 });
