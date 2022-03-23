@@ -36,4 +36,48 @@ describe('Testa o componente Pokedex', () => {
 
     expect(screen.getByText('Pikachu')).toBeInTheDocument();
   });
+
+  test('Contém botões de filtro e um botão de resetar o filtro', () => {
+    renderWithRouter(<App />);
+
+    const allBtn = screen.getByRole('button', {
+      name: 'All',
+    });
+    expect(allBtn).toBeInTheDocument();
+
+    const typeButtons = screen.getAllByTestId('pokemon-type-button');
+
+    typeButtons.forEach((button) => {
+      expect(button).toBeInTheDocument();
+    });
+
+    const fireBtn = screen.getByRole('button', {
+      name: 'Fire',
+    });
+    expect(fireBtn).toBeInTheDocument();
+
+    userEvent.click(fireBtn);
+
+    const charmander = screen.getByText('Charmander');
+    expect(charmander).toBeInTheDocument();
+
+    const nextPokemonBtn = screen.getByRole('button', {
+      name: 'Próximo pokémon',
+    });
+    userEvent.click(nextPokemonBtn);
+
+    const rapidash = screen.getByText('Rapidash');
+    expect(rapidash).toBeInTheDocument();
+
+    userEvent.click(nextPokemonBtn);
+    expect(charmander).toBeInTheDocument();
+
+    userEvent.click(allBtn);
+
+    const pikachu = screen.getByText('Pikachu');
+    expect(pikachu).toBeInTheDocument();
+
+    userEvent.click(nextPokemonBtn);
+    expect(charmander).toBeInTheDocument();
+  });
 });
