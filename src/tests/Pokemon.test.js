@@ -33,4 +33,19 @@ describe('Testa o componente Pokemon', () => {
 
     expect(pathname).toBe('/pokemons/25');
   });
+
+  test('Contém uma estrela nos pokémons favoritos', () => {
+    renderWithRouter(<App />);
+
+    const detailsLink = screen.getByRole('link', {
+      name: 'More details',
+    });
+    userEvent.click(detailsLink);
+
+    const favoriteCheckbox = screen.getByRole('checkbox');
+    userEvent.click(favoriteCheckbox);
+
+    const { src } = screen.getByAltText('Pikachu is marked as favorite');
+    expect(src).toBe('http://localhost/star-icon.svg');
+  });
 });
