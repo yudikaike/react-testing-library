@@ -52,4 +52,28 @@ describe('Testa componente PokemonDetails', () => {
     const location2Text = screen.getByText('Kanto Power Plant');
     expect(location2Text).toBeInTheDocument();
   });
+
+  test('Pode favoritar um pokémon através da página de detalhes', () => {
+    renderWithRouter(<App />);
+
+    const detailsLink = screen.getByRole('link', {
+      name: linkName,
+    });
+    userEvent.click(detailsLink);
+
+    const favoriteCheckbox = screen.getByRole('checkbox');
+    const checkboxLabel = screen.getByText('Pokémon favoritado?');
+    expect(checkboxLabel).toBeInTheDocument();
+
+    userEvent.click(favoriteCheckbox);
+
+    const favoritesLink = screen.getByRole('link', {
+      name: 'Favorite Pokémons',
+    });
+
+    userEvent.click(favoritesLink);
+
+    const favoritePokemon = screen.getByText('Pikachu');
+    expect(favoritePokemon).toBeInTheDocument();
+  });
 });
