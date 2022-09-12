@@ -1,16 +1,29 @@
-# 🚧 README em construção 🚧
+<h1>React Testing Library</h1>
 
-<!-- Olá, Tryber!
+<h2>Descrição sobre o projeto</h2>
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+<i>React Testing Library</i> é um projeto desenvolvido para a prática de testes em <b>React.js</b> utilizando a <b>React Testing Library</b>.
 
-É essencial que você preencha esse documento por conta própria, ok?
+<b>Disclaimer</b>: As funções à serem testadas foram desenvolvidas pela <a href="https://github.com/betrybe">Trybe</b>.
 
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
+<h2>Tecnologias utilizadas</h2>
 
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
+<img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+<img alt="React Router" src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" />
 
--->
+<h2>Como executar o projeto</h2>
+
+Para instalar as dependências:
+```bash
+npm install
+```
+
+Para executar os testes:
+```bash
+npm test
+```
+
+Para executar o projeto:
+```bash
+npm start
+```
